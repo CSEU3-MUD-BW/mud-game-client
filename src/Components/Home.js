@@ -9,7 +9,7 @@ function Home(props) {
     }
 
     return (
-        <div>
+        <div className='container-h'>
             <h2>Welcome </h2>
             <p>This is where it all begins </p>
             <NavLink exact to='/' onClick={onLogOut}> Log Out</NavLink>

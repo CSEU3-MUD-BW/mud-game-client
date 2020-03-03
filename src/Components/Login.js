@@ -26,7 +26,7 @@ const Login = props => {
     }
 
     return (
-        <div className='container'>
+        <div className='container-l'>
            <p className='intro'> Welcome to the Abandoned Spaceship </p>
             <div className='form-container'>
 

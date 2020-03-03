@@ -2,10 +2,10 @@
   text-align: center;
 }
 
-.container {
+.container-l {
   text-align: center;
   height: 100vh;
-  background: url(./images/desktop.png);
+  background: url(./images/login-background-LD.png);
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -16,12 +16,22 @@
 .container-su {
   text-align: center;
   height: 100vh;
-  background: url(./images/space.jpg);
+  background: url(./images/signup-background-LD.png);
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 50px;
+}
+
+.container-h {
+  text-align: center;
+  height: 100vh;
+  background: url(./images/homepage-background-LD.png);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .intro {

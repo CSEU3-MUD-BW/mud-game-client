@@ -18,9 +18,9 @@ function App() {
   );
 }
 
-function withAuthCheck(component, props) {
+function withAuthCheck(Component, props) {
   if (localStorage.getItem('token')) {
-    return <component {...props} />
+    return <Component {...props} />
   }
   return <Redirect to='/' />;
 }
