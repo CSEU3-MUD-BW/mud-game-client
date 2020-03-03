@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import axios from 'axios';
 
 
-export const apiURL = ' https://lambda-mud-test.herokuapp.com/api/';
+export const apiURL = 'https://cseu3-mud.herokuapp.com/api/';
 
 
 
