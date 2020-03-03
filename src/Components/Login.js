@@ -8,7 +8,6 @@ const Login = props => {
     const username = useRef();
     const password = useRef();
 
-
     const handleSubmit = () => {
 
         const userData = {
@@ -27,23 +26,26 @@ const Login = props => {
     }
 
     return (
-        <div>
-            Welcome to the login page
+        <div className='container'>
+           <p className='intro'> Welcome to the Abandoned Spaceship </p>
+            <div className='form-container'>
 
-            <div>
-                <input type="text" placeholder="UserName" required ref={username} />
+                <div>
+                    <input className='input'  type="text" placeholder="UserName" required ref={username} />
+                </div>
+
+                <div>
+                    <input className='input' type="password" placeholder="Password" required ref={password} />
+                </div>
+
+                <button className='form-button' onClick={handleSubmit} > Login </button>
+
+                <p className='text-p'>
+                    {" "}
+                    Dont have an account yet? &nbsp; <Link to="/signup"> Sign up here </Link>{" "}
+                </p>
+
             </div>
-
-            <div>
-                <input type="password" placeholder="Password" required ref={password} />
-            </div>
-
-            <button onClick={handleSubmit}> Login </button>
-
-            <p>
-                {" "}
-                Dont have an account yet? &nbsp; <Link to="/signup"> Sign up here </Link>{" "}
-            </p>
 
         </div>
     )
