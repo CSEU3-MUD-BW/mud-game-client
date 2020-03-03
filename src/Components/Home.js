@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+
 
 function Home(props) {
     const onLogOut = () => {
@@ -12,7 +12,7 @@ function Home(props) {
         <div className='container-h'>
             <h2>Welcome </h2>
             <p>This is where it all begins </p>
-            <NavLink exact to='/' onClick={onLogOut}> Log Out</NavLink>
+            <p onClick={onLogOut}> Log Out</p>
         </div>
     )
 }
