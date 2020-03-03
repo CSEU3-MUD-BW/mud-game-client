@@ -6,14 +6,12 @@ import { signup } from '../redux/actions/actionCreators'
 const SignUp = props => {
 
     const username = useRef();
-    
     const password = useRef();
 
     const handleSubmit = () => {
 
-        console.log('im here')
         const userData = {
-            username: username.current.value,         
+            username: username.current.value,
             password1: password.current.value,
             password2: password.current.value
         }
@@ -23,19 +21,32 @@ const SignUp = props => {
         }
     }
 
+    if (props.token) {
+        props.history.push('/home')
+    }
 
     return (
-        <div>
+        <div className='container-su'>
             Welcome to the SignUp page
+
+            <div className='form-container'>
+
             <div>
-                <input type="text" placeholder="UserName" required ref={username} />
+                <input className='input'  type="text" placeholder="UserName" required ref={username} />
             </div>
 
             <div>
-                <input type="password" placeholder="Password" required ref={password} />
+                <input className='input' type="password" placeholder="Password" required ref={password} />
             </div>
 
-            <button onClick={handleSubmit}> SignUp </button>
+            <button className='form-button' onClick={handleSubmit}> SignUp </button>
+
+            <p className='text-p'>
+                {" "}
+                Already have an account? &nbsp; <Link to="/"> Login</Link>{" "}
+            </p>
+
+            </div>
 
         </div>
     )
@@ -44,6 +55,7 @@ const SignUp = props => {
 const mapStateToProps = store => {
     return {
         loading: store.authentication.loading,
+        token: store.authentication.token,
         error: store.authentication.error
     }
 }
