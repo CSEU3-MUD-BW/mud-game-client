@@ -5,39 +5,29 @@
 .container {
   text-align: center;
   height: 100vh;
-  background: url(./images/space.jpg);
-  /* linear-gradient(180deg, #1f43d4 0%, rgba(31, 67, 212, 0.5) 100%); */
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* background-repeat: no-repeat;
-  background-position: bottom; */
+  background: url(./images/desktop.png);
   background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 50px;
 }
 
 .container-su {
   text-align: center;
   height: 100vh;
-  background: url(./images/desktop.png);
-  /* linear-gradient(180deg, #1f43d4 0%, rgba(31, 67, 212, 0.5) 100%); */
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* background-repeat: no-repeat;
-  background-position: bottom; */
+  background: url(./images/space.jpg);
   background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 50px;
 }
 
-.intro{
-  color:white;
-  margin-top:20px;
-  font-size:30px;
+.intro {
+  color: white;
+  margin-top: 20px;
+  font-size: 30px;
 }
 .form-container {
   width: 500px;
@@ -70,5 +60,3 @@
   padding-left: 10px;
   padding-right: 10px;
 }
-
-
