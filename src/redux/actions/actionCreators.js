@@ -12,6 +12,7 @@ export const signup = userData => dispatch => {
     axios
     .post(`${apiURL}registration/`, userData)
       .then(res => {
+        localStorage.setItem('token', res.data.key)
         dispatch({ type: types.SIGNUP_SUCCESS, payload: res.data.key });
       })
       .catch(err => {
@@ -19,25 +20,6 @@ export const signup = userData => dispatch => {
         dispatch({ type: types.SIGNUP_FAILURE });
       });
   };
-
-// export const signUp = (userData) => {
-
-//     return (dispatch) => {
-
-//         dispatch({ type: types.SIGNUP_START });
-//         axios
-//         .post(`${apiURL}registration/`, userData)
-//           .then(res => {
-//             dispatch({ type: types.SIGNUP_SUCCESS, payload: res.data.key });
-//           })
-//           .catch(err => {
-//             console.log(err);
-//             dispatch({ type: types.SIGNUP_FAILURE });
-//           });
-//       };
-
-//     }
-
 
   
 export const login = userData => dispatch => {
