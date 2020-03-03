@@ -27,7 +27,7 @@ const SignUp = props => {
 
     return (
         <div className='container-su'>
-            Welcome to the SignUp page
+            {/* Welcome to the SignUp page */}
 
             <div className='form-container'>
 
