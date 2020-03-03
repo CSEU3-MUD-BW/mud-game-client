@@ -6,15 +6,14 @@ import { signup } from '../redux/actions/actionCreators'
 const SignUp = props => {
 
     const username = useRef();
-    // const email = useRef();
+    
     const password = useRef();
 
     const handleSubmit = () => {
 
         console.log('im here')
         const userData = {
-            username: username.current.value,
-            // email: email.current.value,
+            username: username.current.value,         
             password1: password.current.value,
             password2: password.current.value
         }
@@ -31,10 +30,6 @@ const SignUp = props => {
             <div>
                 <input type="text" placeholder="UserName" required ref={username} />
             </div>
-
-            {/* <div>
-                <input type="email" autoComplete="email" placeholder="Email" required ref={email} />
-            </div> */}
 
             <div>
                 <input type="password" placeholder="Password" required ref={password} />
