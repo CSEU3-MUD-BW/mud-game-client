@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 const Login = props => {
 
-    // const email = useRef();
     const username = useRef();
     const password = useRef();
 
@@ -14,42 +13,35 @@ const Login = props => {
 
         const userData = {
             username: username.current.value,
-            // email: email.current.value,
             password: password.current.value,
         }
 
         if (userData.username && userData.password) {
             props.login(userData)
-            // props.history.push('/home');
-
         }
-        
+
     }
 
-    if (props.token){
+    if (props.token) {
         props.history.push('/home')
     }
-    // console.log(props)
+
     return (
         <div>
             Welcome to the login page
 
             <div>
-                <input type="text"  placeholder="UserName" required ref={username} />
+                <input type="text" placeholder="UserName" required ref={username} />
             </div>
 
-            {/* <div>
-                <input type="email" placeholder="Email" required />
-            </div> */}
-
             <div>
-                <input type="password" placeholder="Password" required  ref={password} />
+                <input type="password" placeholder="Password" required ref={password} />
             </div>
 
             <button onClick={handleSubmit}> Login </button>
 
             <p>
-            {" "}
+                {" "}
                 Dont have an account yet? &nbsp; <Link to="/signup"> Sign up here </Link>{" "}
             </p>
 
@@ -61,7 +53,7 @@ const mapStateToProps = store => {
     return {
         loading: store.authentication.loading,
         token: store.authentication.token,
-        error: store.authentication.error 
+        error: store.authentication.error
     }
 }
 
