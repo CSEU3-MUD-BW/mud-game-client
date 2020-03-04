@@ -17,9 +17,11 @@ function userReducer(state = initialState, action) {
     case (types.LOGIN_SUCCESS):
       return { ...state, token: action.payload, loading: false };
     case (types.SIGNUP_FAILURE):
-      return { ...state, error:true, loading: false };
+      return { ...state, error: true, loading: false };
     case (types.LOGIN_FAILURE):
-        return { ...state, error:true, loading: false };  
+      return { ...state, error: true, loading: false };
+    case(types.LOGOUT):
+    return{...state, token:''}  
     default:
       return state;
   }
