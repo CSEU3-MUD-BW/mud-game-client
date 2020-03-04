@@ -2,9 +2,13 @@ import { combineReducers } from 'redux';
 import authentication from './authenticationReducer';
 import character from './characterReducer';
 
+import roomsReducer from './roomsReducer';
+
 const appReducer = combineReducers({
     character,
-    authentication
+    authentication,
+
+    rooms: roomsReducer
 });
 
 // const rootReducer = (state, action) => {
