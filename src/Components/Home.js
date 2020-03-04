@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {logout} from '../redux/actions/actionCreators';
+
 
 
 function Home(props) {
-    const onLogOut = () => {
-        localStorage.removeItem('token');
-        props.history.push('/')
+    const onLogOut = async () => {
+        props.logout()
+        await localStorage.removeItem('token');
+        props.history.push('/');
     }
 
     return (
@@ -24,5 +27,6 @@ const mapStateToProps = () => {
 }
 
 const mapDispatchToProps = {
+    logout
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

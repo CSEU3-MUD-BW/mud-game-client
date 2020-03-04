@@ -4,6 +4,9 @@ import axios from 'axios';
 
 export const apiURL = 'https://cseu3-mud.herokuapp.com/api/';
 
+export const logout = () => {
+  return { type: types.LOGOUT,}
+}
 
 
 export const signup = userData => dispatch => {
