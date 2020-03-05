@@ -4,7 +4,7 @@ const initialState = {
   position: [0, 0],
   roomId: 1,
   error: '',
-  numberOfPlayers: 1
+  numberOfPlayers: 0
 };
 
 const playerReducer = (state = initialState, action) => {

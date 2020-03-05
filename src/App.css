@@ -125,9 +125,9 @@
   margin-top: 7px;
 }
 
-.direction:hover{
+.direction:hover {
   background-color: black;
-  color:white;
+  color: white;
 }
 
 .sidebox-direction {
@@ -175,4 +175,14 @@
   border-radius: 10px;
   margin-top: 7px;
   margin-left: 3px;
+}
+
+.logout {
+  border: none;
+  padding: 10px 30px;
+  border-radius: 8px;  
+  height: 45px;
+  margin-top: 10px;
+  background-color:#808080;
+  color:white;
 }

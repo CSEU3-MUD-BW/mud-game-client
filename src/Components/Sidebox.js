@@ -9,11 +9,7 @@ function Sidebox(props) {
     useEffect(() => {
         props.getRooms()
         props.initialize()
-    }, [])
-
-
-
-   
+    }, [])   
 
     let title = '';
     let description = '';
@@ -39,7 +35,6 @@ function Sidebox(props) {
         }
 
     }
-
 
     return (
         <div className='sidebox-container' >
