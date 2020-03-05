@@ -93,7 +93,11 @@ function Sidebox(props) {
 
                 </div>
 
-            
+            <p className='chat-box'>Chat box</p>
+            <div className='sidebox-footer'>
+            <p className='chat-box-message'>Message</p>
+            <p className='enter'>Enter</p>
+            </div>
 
         </div>
     )
