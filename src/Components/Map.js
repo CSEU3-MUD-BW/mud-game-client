@@ -76,6 +76,17 @@ const StyledMapDiv = styled.div`
       }
     }
   }
+
+  /* And finally, animate the whole lot! */
+  animation: drift 100s 0s infinite linear;
+
+  @keyframes drift {
+    0% { transform: rotate(0deg) }
+    25% { transform: rotate(-10deg) }
+    50% { transform: rotate(0deg) }
+    75% { transform: rotate(10deg) }
+    100% { transform: rotate(0deg) }
+  }
 `;
 
 function Map(props) {
