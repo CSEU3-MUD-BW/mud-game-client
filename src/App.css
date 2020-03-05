@@ -152,6 +152,7 @@
   border-radius: 10px;
   height: 35px;
   padding-top: 3px;
+
 }
 
 .chat-box {
@@ -191,10 +192,11 @@
 
 .logout {
   border: none;
-  padding: 10px 30px;
+  padding: 6px 20px;
   border-radius: 8px;  
   height: 45px;
   margin-top: 10px;
   background-color:#808080;
   color:white;
+  font-family: 'Press Start 2P', cursive;
 }
