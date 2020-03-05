@@ -75,6 +75,8 @@
   padding-right: 10px;
 }
 .sidebox-container {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 15px;
   width: 30%;
   height: 601px;
   border: 4px solid white;
@@ -99,11 +101,14 @@
   border: 4px solid white;
   /* margin: auto; */
   flex: 1;
+  padding: 10px;
   /* width: 40%; */
   height: 30px;
   border-radius: 10px;
   margin-top: 10px;
   margin-left: 5px;
+  height: 22px;
+
 }
 
 .direction-container {
@@ -115,7 +120,9 @@
   margin-bottom: 7px;
 }
 .direction {
-  width: 20%;
+  width: 25%;
+  height: 22px;
+  padding-top: 10px;
   margin: auto;
   border-radius: 5px;
   background: white;
@@ -123,6 +130,7 @@
   cursor: pointer;
   margin-bottom: 7px;
   margin-top: 7px;
+  
 }
 
 .direction:hover {
@@ -150,7 +158,7 @@
   width: 95%;
   margin: auto;
   margin-top: 7px;
-  height: 180px;
+  height: 140px;
   border-radius: 10px;
 }
 
@@ -161,20 +169,22 @@
 
 .chat-box-message {
   border: 4px solid white;
-  width: 79%;
-  margin-left: 3px;
+  width: 70%;
+  margin-left: 6px;
   margin-top: 7px;
   height: 35px;
   border-radius: 10px;
+  padding-top: 4px;
 }
 
 .enter {
   border: 4px solid white;
   height: 35px;
-  width: 15%;
+  width: 20%;
   border-radius: 10px;
   margin-top: 7px;
-  margin-left: 3px;
+  margin-left: 6px;
+  padding-top: 4px;
 }
 
 .logout {
