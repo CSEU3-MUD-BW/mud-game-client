@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { movePlayerUp, movePlayerDown, movePlayerRight, movePlayerLeft } from '../redux/actions/actionCreators';
+import { movePlayer } from '../redux/actions/actionCreators';
 import walkSprite from '../images/player_walk.png';
 
 function Player(props) {
@@ -11,13 +11,13 @@ function Player(props) {
             e.preventDefault();
             switch (e.keyCode) {
                 case 38:
-                    return props.movePlayerUp();
+                    return props.movePlayer('n');
                 case 40:
-                    return props.movePlayerDown();
+                    return props.movePlayer('s');
                 case 39:
-                    return props.movePlayerRight();
+                    return props.movePlayer('e');
                 case 37:
-                    return props.movePlayerLeft();
+                    return props.movePlayer('w');
                 default:
                     return e.keyCode;
             }
@@ -31,8 +31,8 @@ function Player(props) {
     return (
         <div style={{
             position: 'absolute',
-            top:props.player.position[1],
-            left:props.player.position[0],
+            top:props.player.position[0] * 40,
+            left:props.player.position[1] * 40,
             backgroundImage:`url('${walkSprite}')`,
             width:'40px',
             height:'40px',
@@ -49,9 +49,6 @@ const mapStateToProps = store => {
 }
 
 const mapDispatchToProps = {
-    movePlayerUp,
-    movePlayerDown,
-    movePlayerRight,
-    movePlayerLeft
+    movePlayer
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Player);
