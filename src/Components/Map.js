@@ -2,89 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 
 const StyledMapDiv = styled.div`
-  width: 600px;
-  height: 600px;
-  background: grey;
-  margin: 0 auto;
-  /* padding: 1rem; */
-  border-radius: 10px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
-  .map.row {
-    width: 100%;
-    
-    flex: 1;
-    display: flex;
-
-    .tile {
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-    }
-
-    .symbol {
-      height: 100%;
-      flex: 1;
-
-      &.room {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .tile {
-          height: 100%;
-          width: 100%;
-
-          background: black;
-          border: 3px solid white;
-          border-radius: 5px;
-        }
-
-        &.current .tile {
-          background: white;
-          border: 3px solid black;
-        }
-      }
-
-      &.horizontal-connector {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .tile {
-          height: 30%;
-          width: 100%;
-
-          background: black;
-          border-top: 2px solid white;
-          border-bottom: 2px solid white;
-        }
-      }
-
-      &.vertical-connector {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .tile {
-          height: 100%;
-          width: 30%;
-
-          background: black;
-          border-left: 2px solid white;
-          border-right: 2px solid white;
-        }
-      }
-    }
-  }
-
-  /* And finally, animate the whole lot! */
   animation: drift 100s 0s infinite linear;
-
+    
   @keyframes drift {
     0% { transform: rotate(0deg) }
     25% { transform: rotate(-10deg) }
@@ -92,9 +11,95 @@ const StyledMapDiv = styled.div`
     75% { transform: rotate(10deg) }
     100% { transform: rotate(0deg) }
   }
-`;
 
-function Map(props) {
+  h2 {
+    margin-bottom: 0.5rem;
+    font-family: 'Press Start 2P', cursive;
+    color: #F3F3F3;
+  }
+
+  .map {
+      width: 500px;
+      height: 500px;
+      background: #505050;
+      /* margin: 0 auto; */
+      padding: 1rem;
+      border-radius: 10px;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      
+      .row {
+        width: 100%;
+        
+        flex: 1;
+        display: flex;
+        
+        .tile {
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          background: #0A0A0A;
+        }
+        
+        .symbol {
+        height: 100%;
+        flex: 1;
+        
+        &.room {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          
+          .tile {
+            height: 100%;
+            width: 100%;
+            
+            border: 3px solid #F3F3F3;
+            border-radius: 5px;
+          }
+          
+          &.current .tile {
+            background: #F3F3F3;
+            border: 3px solid #0A0A0A;
+          }
+        }
+        
+        &.horizontal-connector {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          
+          .tile {
+            height: 30%;
+            width: 100%;
+            
+            border-top: 2px solid #F3F3F3;
+            border-bottom: 2px solid #F3F3F3;
+          }
+        }
+        
+        &.vertical-connector {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          
+          .tile {
+            height: 100%;
+            width: 30%;
+            
+            border-left: 2px solid #F3F3F3;
+            border-right: 2px solid #F3F3F3;
+          }
+        }
+      }
+    }
+  }
+`;
+  
+  function Map(props) {
   const { rooms, player } = props;
 
   //
@@ -204,33 +209,38 @@ function Map(props) {
   // console.log(grid);
   return (
     <StyledMapDiv>
-      {
-        grid.map((row, y) => (
-          <div className='map row' key={`row-${y}`}>
-            {
-              row.map((symbol, x) => (
-                symbol === '==' ?
+      <div className='title' >
+        <h2>MUDerelict</h2>
+      </div>
+      <div className='map'>
+        {
+          grid.map((row, y) => (
+            <div className='row' key={`row-${y}`}>
+              {
+                row.map((symbol, x) => (
+                  symbol === '==' ?
                   <div className='symbol horizontal-connector' key={`symbol-${x}`}>
-                    <div className='tile' />
-                  </div> :
-                symbol === '||' ?
+                      <div className='tile' />
+                    </div> :
+                  symbol === '||' ?
                   <div className='symbol vertical-connector' key={`symbol-${x}`}>
-                    <div className='tile' />
-                  </div> :
-                symbol === undefined ? 
+                      <div className='tile' />
+                    </div> :
+                  symbol === undefined ? 
                   <div className='symbol gap' key={`symbol-${x}`} /> :
-                symbol === player.roomId.toString() ?
+                  symbol === player.roomId.toString() ?
                   <div className='symbol room current' key={`symbol-${x}`}>
+                      <div className='tile' />
+                    </div> :
+                  <div className='symbol room' key={`symbol-${x}`}>
                     <div className='tile' />
-                  </div> :
-                <div className='symbol room' key={`symbol-${x}`}>
-                  <div className='tile' />
-                </div>
-              ))
-            }
-          </div>
-        ))
-      }
+                  </div>
+                ))
+              }
+            </div>
+          ))
+        }
+      </div>
     </StyledMapDiv>
   )
 }

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .container-l {
@@ -29,69 +30,111 @@
   height: 100vh;
   background: url(./images/homepage-background-LD.png);
   background-size: cover;
+  color: #F3F3F3;
+
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: white;
-  display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: row;
   /* added display flex and flex direction */
 }
 
 .intro {
-  color: white;
-  margin-top: 20px;
+  color: #F3F3F3;
+  margin-top: 3rem;
   font-size: 30px;
+  font-family: 'Press Start 2P', cursive;
 }
 .form-container {
   width: 500px;
   height: 320px;
   margin: auto;
   margin-top: 100px;
-  background-color: white;
+  background-color: #0A0A0A;
+
+  border: 3px solid #F3F3F3;
+  border-radius: 15px;
+
+  color: #F3F3F3;
 }
 
 .input {
   height: 45px;
   border-radius: 5px;
-  background: #edf2f7;
+  background: #F3F3F3;
   border: none;
   padding-left: 10px;
   margin-top: 30px;
-  color: black;
+  color: #0A0A0A;
   width: 295px;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .form-button {
   border: none;
   padding: 10px 30px;
-  background: #f35667;
+  background: #505050;
   border-radius: 8px;
-  color: white;
+  color: #F3F3F3;
   height: 45px;
   margin-top: 35px;
+  margin-bottom: 5px;
   width: 300px;
   padding-left: 10px;
   padding-right: 10px;
+  font-family: 'Press Start 2P', cursive;
 }
+.form-button:hover {
+  cursor: pointer;
+}
+
+.text-p a {
+  color: red;
+}
+
 .sidebox-container {
   font-family: 'Press Start 2P', cursive;
   font-size: 15px;
-  width: 30%;
-  height: 601px;
-  border: 4px solid white;
-  margin-top: 15px;
-  background-color: black;
+  width: 20%;
+  height: 90%;
+  border: 4px solid #F3F3F3;
+  margin-right: 2rem;
+  background: #F3F3F3;
   border-radius: 15px;
 }
+
+.sidebox-container .section {
+  border: 5px solid #F3F3F3;
+  border-radius: 15px;
+  background: #0A0A0A;
+}
+
+.sidebox-container .section.top {
+  height: 38%;
+  display: flex;
+  flex-direction: column;
+}
+.sidebox-container .section.middle {
+  height: 23%;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.sidebox-container .section.bottom {
+  height: 34%;
+}
+
 .sidebox-description {
-  border: 4px solid white;
+  border: 4px solid #F3F3F3;
   width: 90%;
   margin: auto;
   border-radius: 5px;
   border-radius: 5px;
   height: 75px;
   padding: 5px;
+  font-size: 0.8rem;
+  flex-grow: 1;
 }
 
 .sidebox-mini-container {
@@ -99,105 +142,115 @@
 }
 
 .sidebox-mini {
-  border: 4px solid white;
-  /* margin: auto; */
+  border: 4px solid #F3F3F3;
   flex: 1;
   padding: 10px;
-  /* width: 40%; */
   height: 30px;
   border-radius: 10px;
   margin-top: 10px;
   margin-left: 5px;
   height: 22px;
 
+  font-size: 0.5rem;
+  line-height: 0.8rem;
 }
 
 .direction-container {
-  border: 4px solid white;
-  width: 45%;
-  margin: auto;
-  border-radius: 10px;
-  /* margin-top: 7px; */
-  margin-bottom: 7px;
+  width: 55%;
+  height: 90%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
+
 .direction {
-  width: 25%;
-  height: 22px;
-  padding-top: 10px;
-  margin: auto;
+  width: 2.5rem;
+  height: 2.5rem;
+
   border-radius: 5px;
-  background: white;
-  color: black;
+  background: #F3F3F3;
+  color: #0A0A0A;
   cursor: pointer;
-  margin-bottom: 7px;
-  margin-top: 7px;
-  
 }
 
 .direction:hover {
-  background-color: black;
-  color: white;
+  background-color: #0A0A0A;
+  color: #F3F3F3;
 }
 
 .sidebox-direction {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  width: 90%;
 }
 
-.Error-message {
-  color: red;
-  border: 4px solid white;
-  width: 85%;
-  margin: auto;
-  margin-top: 7px;
+.move-message {
+  width: 25%;
+  height: 60%;
+  border: 4px solid #F3F3F3;
   border-radius: 10px;
-  height: 35px;
-  padding-top: 3px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  
+  color: red;
+  font-size: 0.5rem;
+  line-height: 1rem;
 }
 
 .chat-box {
-  border: 4px solid white;
-  width: 95%;
+  border: 4px solid #F3F3F3;
+  width: 90%;
   margin: auto;
   margin-top: 7px;
-  height: 126px;
+  height: 73%;
   border-radius: 10px;
   padding-top: 5px;
+  flex-grow: 1;
 }
 
 .sidebox-footer {
   display: flex;
-  margin: auto;
 }
 
 .chat-box-message {
-  border: 4px solid white;
-  width: 70%;
+  border: 4px solid #F3F3F3;
+  width: 65%;
   margin-left: 6px;
-  margin-top: 4px;
-  height: 25px;
+  margin-top: 7px;
+  height: 20px;
   border-radius: 10px;
-  padding-top: 4px;
+}
+.chat-box-message p {
+  margin: 0;
+  margin-left: 0.5rem;
+  text-align: left;
 }
 
 .enter {
-  border: 4px solid white;
-  height: 23px;
+  border: 4px solid #F3F3F3;
+  height: 20px;
   width: 20%;
   border-radius: 10px;
   margin-top: 7px;
   margin-left: 6px;
-  padding-top: 4px;
+  font-size: 0.5rem;
 }
 
 .logout {
-  border: none;
+  border: 3px solid #F3F3F3;
   padding: 6px 20px;
   border-radius: 8px;  
   height: 45px;
-  margin-top: 10px;
-  background-color:#808080;
-  color:white;
+  margin-left: 2rem;
+  background-color:#0A0A0A;
+  color:#F3F3F3;
   font-family: 'Press Start 2P', cursive;
+}
+.logout:hover {
+  cursor: pointer;
 }

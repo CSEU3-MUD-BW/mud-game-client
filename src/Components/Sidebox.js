@@ -38,59 +38,63 @@ function Sidebox(props) {
 
     return (
         <div className='sidebox-container' >
-            <p className='sidebox-title'>{title}</p>
-            <p className='sidebox-description'>{description}</p>
+            <div className='section top'>
+                <p className='sidebox-title'>{title}</p>
+                <p className='sidebox-description'>{description}</p>
 
-            <div className='sidebox-mini-container'>
-                <p className='sidebox-mini'>ITEMS</p>
-                <p className='sidebox-mini' style={{
-                    marginRight:'5px'
-                }}>{props.number} PLAYER IN ROOM</p>
-
-            </div>
-
-        
-                <div>
-
-                    <div className='direction-container'>
-                        <p className='direction' onClick={() => {
-                            updatePlayerPosition('n')
-                        }}>
-                            N
-            </p>
-
-                        <div className='sidebox-direction'>
-                            <p className='direction' onClick={() => {
-                                updatePlayerPosition('w')
-                            }}>
-                                W
-            </p>
-                            <p className='direction' onClick={() => {
-                                updatePlayerPosition('e')
-                            }}>
-                                E
-            </p>
-
-                        </div>
-                        <p className='direction' onClick={() => {
-                            updatePlayerPosition('s')
-                        }}>
-                            S
-            </p>
-                    </div>
-
-                    <div>
-                    <p className='Error-message'>{props.error}</p>
-                    </div>
+                <div className='sidebox-mini-container'>
+                    <p className='sidebox-mini'>ITEMS</p>
+                    <p className='sidebox-mini' style={{
+                        marginRight:'5px'
+                    }}>{props.number} PLAYERS IN ROOM</p>
 
                 </div>
-
-            <p className='chat-box'>Chat Box</p>
-            <div className='sidebox-footer'>
-            <p className='chat-box-message'>Message</p>
-            <p className='enter'>Enter</p>
             </div>
 
+            <div className='section middle'>
+                <div className='direction-container'>
+                    <div className='direction' onClick={() => {
+                        updatePlayerPosition('n')
+                    }}>
+                        <p>N</p>
+                    </div>
+
+                    <div className='sidebox-direction'>
+                        <div className='direction' onClick={() => {
+                            updatePlayerPosition('w')
+                        }}>
+                            <p>W</p>
+                        </div>
+                        <div className='direction' onClick={() => {
+                            updatePlayerPosition('e')
+                        }}>
+                            <p>E</p>
+                        </div>
+                    </div>
+
+                    <div className='direction' onClick={() => {
+                        updatePlayerPosition('s')
+                    }}>
+                        <p>S</p>
+                    </div>
+                </div>
+
+                <div className='move-message'>
+                    <p>{props.error}</p>
+                </div>
+            </div>
+
+            <div className='section bottom'>
+                <p className='chat-box'>Chat Box</p>
+                <div className='sidebox-footer'>
+                    <div className='chat-box-message'>
+                        <p>_</p>
+                    </div>
+                    <div className='enter'>
+                        <p>Enter</p>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
