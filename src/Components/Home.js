@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {logout} from '../redux/actions/actionCreators';
+import { logout } from '../redux/actions/actionCreators';
+import Sidebox from './Sidebox';
+import World from './World';
 
 
 
@@ -16,13 +18,16 @@ function Home(props) {
             <h2>Welcome </h2>
             <p>This is where it all begins </p>
             <p onClick={onLogOut}> Log Out</p>
+
+            <World />
+            <Sidebox />
         </div>
     )
 }
 
 const mapStateToProps = () => {
     return {
-        
+
     }
 }
 
