@@ -13,8 +13,12 @@ const playerReducer = (state = initialState, action) => {
       return { ...state, position: action.payload, roomId: action.roomId, error: 'Awesome move!' };
     case (type.MOVE_PLAYER_ERROR):
       return { ...state, error: action.payload }
-    case (type.SAVE_NUMBER_OF_PLAYERS):
-      return { ...state, numberOfPlayers: action.payload }
+    case (type.GET_PLAYER_INFO):
+      return {
+        ...state,
+        numberOfPlayers: action.payload.players.length,
+        roomId: action.payload.currentRoomID
+      }
     default:
       return state;
   }
