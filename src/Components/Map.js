@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const StyledMapDiv = styled.div`
   width: 600px;
   height: 600px;
-  background: grey;
+  background: #505050;
   margin: 0 auto;
-  /* padding: 1rem; */
+  padding: 1rem;
   border-radius: 10px;
 
   display: flex;
@@ -24,6 +24,7 @@ const StyledMapDiv = styled.div`
       box-sizing: border-box;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
+      background: #0A0A0A;
     }
 
     .symbol {
@@ -39,14 +40,13 @@ const StyledMapDiv = styled.div`
           height: 100%;
           width: 100%;
 
-          background: black;
-          border: 3px solid white;
+          border: 3px solid #F3F3F3;
           border-radius: 5px;
         }
 
         &.current .tile {
-          background: white;
-          border: 3px solid black;
+          background: #F3F3F3;
+          border: 3px solid #0A0A0A;
         }
       }
 
@@ -59,9 +59,8 @@ const StyledMapDiv = styled.div`
           height: 30%;
           width: 100%;
 
-          background: black;
-          border-top: 2px solid white;
-          border-bottom: 2px solid white;
+          border-top: 2px solid #F3F3F3;
+          border-bottom: 2px solid #F3F3F3;
         }
       }
 
@@ -74,9 +73,8 @@ const StyledMapDiv = styled.div`
           height: 100%;
           width: 30%;
 
-          background: black;
-          border-left: 2px solid white;
-          border-right: 2px solid white;
+          border-left: 2px solid #F3F3F3;
+          border-right: 2px solid #F3F3F3;
         }
       }
     }
