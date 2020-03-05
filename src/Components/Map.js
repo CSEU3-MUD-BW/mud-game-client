@@ -43,6 +43,11 @@ const StyledMapDiv = styled.div`
           border: 3px solid white;
           border-radius: 5px;
         }
+
+        &.current .tile {
+          background: white;
+          border: 3px solid black;
+        }
       }
 
       &.horizontal-connector {
@@ -90,7 +95,7 @@ const StyledMapDiv = styled.div`
 `;
 
 function Map(props) {
-  const { rooms } = props;
+  const { rooms, player } = props;
 
   //
   const [grid, setGrid] = useState([])
@@ -196,7 +201,7 @@ function Map(props) {
     }
   };
 
-  console.log(grid);
+  // console.log(grid);
   return (
     <StyledMapDiv>
       {
@@ -214,6 +219,10 @@ function Map(props) {
                   </div> :
                 symbol === undefined ? 
                   <div className='symbol gap' key={`symbol-${x}`} /> :
+                symbol === player.roomId.toString() ?
+                  <div className='symbol room current' key={`symbol-${x}`}>
+                    <div className='tile' />
+                  </div> :
                 <div className='symbol room' key={`symbol-${x}`}>
                   <div className='tile' />
                 </div>
