@@ -42,16 +42,35 @@ export const login = userData => dispatch => {
 
 export const getRooms = userData => dispatch => {
 
+  dispatch({ type: types.GET_ROOMS });
+
   return axiosWithAuth()
     .get(`${apiURL}adv/rooms/`)
     .then(res => {
-      dispatch({ type: types.SAVE_ROOMS, payload: res.data });
+      // dispatch({ type: types.SAVE_ROOMS, payload: res.data });
+      const sortedRooms = res.data.sort((a, b) => a.id - b.id);
+      dispatch({ type: types.GET_ROOMS_SUCCESS, payload: sortedRooms });
     })
     .catch(err => {
-      console.log(err);
-
+      console.log(err)
+      dispatch({ type: types.GET_ROOMS_FAILURE });
     });
 }
+
+ // Map action creators
+//  export const getRooms = () => dispatch => {
+//   dispatch({ type: types.GET_ROOMS });
+
+//   axios.get(`https://cseu3-mud.herokuapp.com/api/adv/rooms/adv/rooms`)
+//     .then(res => {
+//       const sortedRooms = res.data.sort((a, b) => a.id - b.id);
+//       dispatch({ type: types.GET_ROOMS_SUCCESS, payload: sortedRooms });
+//     })
+//     .catch(err => {
+//       console.log(err)
+//       dispatch({ type: types.GET_ROOMS_FAILURE });
+//     });
+// } 
 
 export const initializeGame = userData => dispatch => {
 

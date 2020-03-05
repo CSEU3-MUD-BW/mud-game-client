@@ -4,10 +4,14 @@ import player from './playerReducer';
 import roomReducer from './roomReducer';
 
 
+import roomsReducer from './roomsReducer';
+
 const appReducer = combineReducers({
     player,
+    room:roomReducer,
+    // character,
     authentication,
-    room:roomReducer
+    rooms: roomsReducer
 });
 
 // const rootReducer = (state, action) => {
