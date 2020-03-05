@@ -17,7 +17,7 @@ const StyledMapDiv = styled.div`
   .map.row {
     width: 100%;
     
-    flex-grow: 1;
+    flex: 1;
     display: flex;
 
     .tile {
@@ -28,7 +28,7 @@ const StyledMapDiv = styled.div`
 
     .symbol {
       height: 100%;
-      flex-grow: 1;
+      flex: 1;
 
       &.room {
         display: flex;
@@ -202,9 +202,7 @@ function Map(props) {
                     <div className='tile' />
                   </div> :
                 symbol === undefined ? 
-                  <div className='symbol gap' >
-                    <div className='tile' />
-                  </div> :
+                  <div className='symbol gap' /> :
                 <div className='symbol room'>
                   <div className='tile' />
                 </div>
