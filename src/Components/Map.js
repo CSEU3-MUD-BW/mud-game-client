@@ -37,7 +37,6 @@ function Map(props) {
         const roomsIndex = roomId - 1;
         if (roomId !== 0 && !visited.includes(rooms[roomsIndex])) {
           addToGrid(getGridPosition(room.id), roomId, i);
-          debugger
           toVisit.unshift(rooms[roomsIndex]);
         }
       });
@@ -59,7 +58,7 @@ function Map(props) {
         gridCopy[y - 2][x] = roomId.toString();
       } else {
         // else make two new rows above
-        gridCopy = [new Array(gridCopy[0].length), new Array(gridCopy[0].length), ...gridCopy];
+        gridCopy = [new Array(gridCopy[0].length).fill(undefined), new Array(gridCopy[0].length).fill(undefined), ...gridCopy];
         // and insert the connection and roomId
         gridCopy[1][x] = "||";
         gridCopy[0][x] = roomId.toString();
@@ -76,10 +75,8 @@ function Map(props) {
       gridCopy[y][x + 2] = roomId.toString();
     } else if (direction === 2) { // South
       // If there are no rows to the South, make them!
-      debugger
       if (y === gridCopy.length - 1) {
-        gridCopy = [...gridCopy, new Array(gridCopy[0].length), new Array(gridCopy[0].length)];
-        debugger
+        gridCopy = [...gridCopy, new Array(gridCopy[0].length).fill(undefined), new Array(gridCopy[0].length).fill(undefined)];
       }
       gridCopy[y + 1][x] = '||';
       gridCopy[y + 2][x] = roomId.toString();
