@@ -1,18 +1,36 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getRooms } from '../redux/actions/actionCreators';
+import { getRooms, movePlayer } from '../redux/actions/actionCreators';
 import { logout } from '../redux/actions/actionCreators';
 import Sidebox from './Sidebox';
-import Player from './Player';
 import Map from './Map';
 
 function Home(props) {
-    const { rooms, getRooms } = props;
+    const {
+        rooms, getRooms,
+        player, movePlayer 
+    } = props;
 
     useEffect(() => {
         getRooms()
     }, [])
+
+    window.addEventListener('keydown', e => {
+        e.preventDefault();
+        switch (e.keyCode) {
+            case 38:
+                return movePlayer('n');
+            case 40:
+                return movePlayer('s');
+            case 39:
+                return movePlayer('e');
+            case 37:
+                return movePlayer('w');
+            default:
+                return e.keyCode;
+        }
+    });
 
     const onLogOut = () => {
         localStorage.removeItem('token');
@@ -21,14 +39,10 @@ function Home(props) {
 
     return (
         <div className='container-h'>
-            <h2>Welcome </h2>
-            <p>This is where it all begins </p>
             <p onClick={onLogOut}> Log Out</p>
             <div style={{ position: 'relative' }}>
-                {rooms.length > 0 && <Map rooms={rooms} />}
-                <Player />
+                {rooms.length > 0 && <Map rooms={rooms} player={player} />}
             </div>
-            {/* <World /> */}
             <Sidebox rooms={rooms} />
         </div>
     )
@@ -36,12 +50,14 @@ function Home(props) {
 
 const mapStateToProps = store => {
     return {
-        rooms: store.rooms
+        rooms: store.rooms,
+        player: store.player
     }
 }
 
 const mapDispatchToProps = {
     logout,
-    getRooms
+    getRooms,
+    movePlayer
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
