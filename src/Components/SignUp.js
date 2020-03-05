@@ -23,6 +23,7 @@ const SignUp = props => {
 
     if (props.token) {
         props.history.push('/home')
+        console.log(props)
     }
 
     return (

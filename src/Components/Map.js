@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 
 const StyledMapDiv = styled.div`
-  width: 40rem;
-  height: 40rem;
+  width: 600px;
+  height: 600px;
   background: grey;
   margin: 0 auto;
-  padding: 1rem;
+  /* padding: 1rem; */
   border-radius: 10px;
 
   display: flex;
@@ -186,7 +186,7 @@ function Map(props) {
   };
 
   const getGridPosition = roomId => {
-    debugger
+    // debugger
     for (let y = 0; y < gridCopy.length; y += 2) {
       for (let x = 0; x < gridCopy[0].length; x += 2) {
         if (gridCopy[y][x] === roomId.toString()) {
