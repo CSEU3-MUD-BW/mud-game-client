@@ -1,6 +1,83 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 
+const StyledMapDiv = styled.div`
+  width: 40rem;
+  height: 40rem;
+  background: grey;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .map.row {
+    width: 100%;
+    
+    flex-grow: 1;
+    display: flex;
+
+    .tile {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+    }
+
+    .symbol {
+      height: 100%;
+      flex-grow: 1;
+
+      &.room {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .tile {
+          height: 100%;
+          width: 100%;
+
+          background: black;
+          border: 3px solid white;
+          border-radius: 5px;
+        }
+      }
+
+      &.horizontal-connector {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .tile {
+          height: 30%;
+          width: 100%;
+
+          background: black;
+          border-top: 2px solid white;
+          border-bottom: 2px solid white;
+        }
+      }
+
+      &.vertical-connector {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .tile {
+          height: 100%;
+          width: 30%;
+
+          background: black;
+          border-left: 2px solid white;
+          border-right: 2px solid white;
+        }
+      }
+    }
+  }
+`;
+
 function Map(props) {
   const { rooms } = props;
 
@@ -110,25 +187,33 @@ function Map(props) {
 
   console.log(grid);
   return (
-    <div className='map'>
+    <StyledMapDiv>
       {
         grid.map(row => (
           <div className='map row'>
             {
               row.map(symbol => (
                 symbol === '==' ?
-                  <div className='map horizontal-connector' /> :
+                  <div className='symbol horizontal-connector'>
+                    <div className='tile' />
+                  </div> :
                 symbol === '||' ?
-                  <div className='map vertical-connector' /> :
+                  <div className='symbol vertical-connector'>
+                    <div className='tile' />
+                  </div> :
                 symbol === undefined ? 
-                  <div className='map gap' /> :
-                <div className='map room' />
+                  <div className='symbol gap' >
+                    <div className='tile' />
+                  </div> :
+                <div className='symbol room'>
+                  <div className='tile' />
+                </div>
               ))
             }
           </div>
         ))
       }
-    </div>
+    </StyledMapDiv>
   )
 }
 
