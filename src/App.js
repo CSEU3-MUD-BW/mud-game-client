@@ -6,6 +6,7 @@ import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import './App.css';
 import Home from './Components/Home';
+import Player from './Components/Player';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route exact path='/' component={Login} />
       <Route exact path='/signup' component={SignUp} />
       <Route path='/home' render={props => withAuthCheck(Home, props)} />
+      {/* <Player/> */}
 
     </div>
   );
