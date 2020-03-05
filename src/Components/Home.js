@@ -4,8 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { getRooms } from '../redux/actions/actionCreators';
 import { logout } from '../redux/actions/actionCreators';
 import Sidebox from './Sidebox';
-import World from './World';
-
+import Player from './Player';
 import Map from './Map';
 
 function Home(props) {
@@ -24,10 +23,13 @@ function Home(props) {
         <div className='container-h'>
             <h2>Welcome </h2>
             <p>This is where it all begins </p>
-            { rooms.length > 0 && <Map rooms={rooms} />}
             <p onClick={onLogOut}> Log Out</p>
-            <World />
-            <Sidebox />
+            <div style={{ position: 'relative' }}>
+                {rooms.length > 0 && <Map rooms={rooms} />}
+                <Player />
+            </div>
+            {/* <World /> */}
+            <Sidebox rooms={rooms} />
         </div>
     )
 }

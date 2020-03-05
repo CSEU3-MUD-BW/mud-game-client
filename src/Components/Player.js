@@ -31,11 +31,12 @@ function Player(props) {
     return (
         <div style={{
             position: 'absolute',
-            top:props.player.position[0] * 40,
-            left:props.player.position[1] * 40,
+            top:props.player.position[0] * 63,
+            left:props.player.position[1] * 63,
             backgroundImage:`url('${walkSprite}')`,
-            width:'40px',
-            height:'40px',
+            width:'30px',
+            height:'30px',
+    
         }}>
 
         </div >

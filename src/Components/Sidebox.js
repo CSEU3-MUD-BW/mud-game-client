@@ -101,11 +101,11 @@ function Sidebox(props) {
 }
 const mapStateToProps = store => {
     return {
-        rooms: store.room.rooms,
+        // rooms: store.room.rooms,
         position: store.player.position,
         roomId:store.player.roomId,
         error:store.player.error,
-        number: store.room.numberOfPlayers
+        number: store.player.numberOfPlayers
     }
 }
 

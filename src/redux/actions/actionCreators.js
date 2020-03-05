@@ -1,7 +1,6 @@
 import * as types from './actionTypes';
 import axios from 'axios';
 import { axiosWithAuth } from '../axiosWithAuth'
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../constant'
 import { store } from '../../index';
 export const apiURL = 'https://cseu3-mud.herokuapp.com/api/';
 
@@ -47,7 +46,6 @@ export const getRooms = userData => dispatch => {
   return axiosWithAuth()
     .get(`${apiURL}adv/rooms/`)
     .then(res => {
-      // dispatch({ type: types.SAVE_ROOMS, payload: res.data });
       const sortedRooms = res.data.sort((a, b) => a.id - b.id);
       dispatch({ type: types.GET_ROOMS_SUCCESS, payload: sortedRooms });
     })
@@ -57,20 +55,6 @@ export const getRooms = userData => dispatch => {
     });
 }
 
- // Map action creators
-//  export const getRooms = () => dispatch => {
-//   dispatch({ type: types.GET_ROOMS });
-
-//   axios.get(`https://cseu3-mud.herokuapp.com/api/adv/rooms/adv/rooms`)
-//     .then(res => {
-//       const sortedRooms = res.data.sort((a, b) => a.id - b.id);
-//       dispatch({ type: types.GET_ROOMS_SUCCESS, payload: sortedRooms });
-//     })
-//     .catch(err => {
-//       console.log(err)
-//       dispatch({ type: types.GET_ROOMS_FAILURE });
-//     });
-// } 
 
 export const initializeGame = userData => dispatch => {
 
@@ -94,9 +78,9 @@ export const movePlayer = d => dispatch => {
     .then(res => {
       if (res.data.error_msg) {
         dispatch({
-          type:types.MOVE_PLAYER_ERROR,
-          payload:res.data.error_msg
-        } )
+          type: types.MOVE_PLAYER_ERROR,
+          payload: res.data.error_msg
+        })
       } else {
         dispatch(movePlayerSuccess(res.data.nextRoomID))
       }
@@ -108,118 +92,21 @@ export const movePlayer = d => dispatch => {
 }
 
 
-// export const movePlayerDown = userData => dispatch => {
 
-//   return axiosWithAuth()
-//     .post(`${apiURL}adv/move/`, {
-//       direction: 's'
-//     })
-//     .then(res => {
-//       if (res.data.error_msg) {
-//         dispatch({
-//           type:types.MOVE_PLAYER_ERROR,
-//           payload:res.data.error_msg
-//         } )
-//       } else {
-//         dispatch(movePlayerDownSuccess())
-//       }
-//     })
-//     .catch(err => {
-//       console.log(err);
-
-//     });
-// }
-
-// export const movePlayerRight = userData => dispatch => {
-
-//   return axiosWithAuth()
-//     .post(`${apiURL}adv/move/`, {
-//       direction: 'e'
-//     })
-//     .then(res => {
-//       if (res.data.error_msg) {
-//         dispatch({
-//           type:types.MOVE_PLAYER_ERROR,
-//           payload:res.data.error_msg
-//         } )
-//       } else {
-//         dispatch(movePlayerRightSuccess())
-//       }
-//     })
-//     .catch(err => {
-//       console.log(err);
-
-//     });
-// }
-
-// export const movePlayerLeft = userData => dispatch => {
-
-//   return axiosWithAuth()
-//     .post(`${apiURL}adv/move/`, {
-//       direction: 'w'
-//     })
-//     .then(res => {
-//       if (res.data.error_msg) {
-//         dispatch({
-//           type:types.MOVE_PLAYER_ERROR,
-//           payload:res.data.error_msg
-//         } )
-//       } else {
-//         dispatch(movePlayerLeftSuccess())
-//       }
-//     })
-//     .catch(err => {
-//       console.log(err);
-
-//     });
-// }
 
 
 export const movePlayerSuccess = (roomId) => async dispatch => {
   console.log(store.getState())
-  // const currentPosition = await store.getState().player.position;
 
   let row = Math.ceil(roomId / 10) - 1;
-  let col = roomId % 10;
+  let col = roomId % 10 === 0 ? 9 : (roomId % 10) - 1;
 
-  // if (currentPosition[1] !== 0) {
-    dispatch({
-      type: types.MOVE_PLAYER,
-      payload: [row, col],
-      roomId
-    });
-  // }
+
+  dispatch({
+    type: types.MOVE_PLAYER,
+    payload: [row, col],
+    roomId
+  });
+
 };
 
-// export const movePlayerDownSuccess = () => async dispatch => {
-//   const currentPosition = await store.getState().player.position;
-
-//   if (currentPosition[1] !== MAP_HEIGHT - SPRITE_SIZE) {
-//     dispatch({
-//       type: types.MOVE_PLAYER_DOWN,
-//       payload: [currentPosition[0], currentPosition[1] + SPRITE_SIZE]
-//     });
-//   }
-// };
-
-// export const movePlayerRightSuccess = () => async dispatch => {
-//   const currentPosition = await store.getState().player.position;
-
-//   if (currentPosition[0] !== MAP_WIDTH - SPRITE_SIZE) {
-//     dispatch({
-//       type: types.MOVE_PLAYER_RIGHT,
-//       payload: [currentPosition[0] + SPRITE_SIZE, currentPosition[1]]
-//     });
-//   }
-// };
-
-// export const movePlayerLeftSuccess = () => async dispatch => {
-//   const currentPosition = await store.getState().player.position;
-
-//   if (currentPosition[0] !== 0) {
-//     dispatch({
-//       type: types.MOVE_PLAYER_LEFT,
-//       payload: [currentPosition[0] - SPRITE_SIZE, currentPosition[1]]
-//     });
-//   }
-// };
