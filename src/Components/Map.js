@@ -110,17 +110,23 @@ function Map(props) {
   console.log(grid);
   return (
     <div className='map'>
-      {grid.forEach(row => {
-        row.forEach(symbol => (
-          symbol === '==' ?
-            <div className='map horizontal-connector' /> :
-          symbol === '||' ?
-            <div className='map vertical-connector' /> :
-          symbol === undefined ? 
-            <div className='map gap' /> :
-          <div className='map room' />
+      {
+        grid.map(row => (
+          <div className='map row'>
+            {
+              row.map(symbol => (
+                symbol === '==' ?
+                  <div className='map horizontal-connector' /> :
+                symbol === '||' ?
+                  <div className='map vertical-connector' /> :
+                symbol === undefined ? 
+                  <div className='map gap' /> :
+                <div className='map room' />
+              ))
+            }
+          </div>
         ))
-      })}
+      }
     </div>
   )
 }
