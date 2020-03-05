@@ -2,18 +2,19 @@ import * as types from './actionTypes';
 import axios from 'axios';
 import { axiosWithAuth } from '../axiosWithAuth'
 import { store } from '../../index';
-export const apiURL = 'https://cseu3-mud.herokuapp.com/api/';
+
+// export const testApiURL = 'https://lambda-mud-test.herokuapp.com'
+export const apiURL = 'https://cseu3-mud.herokuapp.com/api';
 
 export const logout = () => {
   return { type: types.LOGOUT, }
 }
 
-
 export const signup = userData => dispatch => {
   dispatch({ type: types.SIGNUP_START });
   console.log('im thereeeeeeeees')
   axios
-    .post(`${apiURL}registration/`, userData)
+    .post(`${apiURL}/registration/`, userData)
     .then(res => {
       localStorage.setItem('token', res.data.key)
       dispatch({ type: types.SIGNUP_SUCCESS, payload: res.data.key });
@@ -24,11 +25,10 @@ export const signup = userData => dispatch => {
     });
 };
 
-
 export const login = userData => dispatch => {
   dispatch({ type: types.LOGIN_START })
   return axios
-    .post(`${apiURL}login/`, userData)
+    .post(`${apiURL}/login/`, userData)
     .then(res => {
       localStorage.setItem('token', res.data.key)
       dispatch({ type: types.LOGIN_SUCCESS, payload: res.data.key });
@@ -39,12 +39,13 @@ export const login = userData => dispatch => {
     });
 }
 
+
 export const getRooms = userData => dispatch => {
 
   dispatch({ type: types.GET_ROOMS });
 
   return axiosWithAuth()
-    .get(`${apiURL}adv/rooms/`)
+    .get(`${apiURL}/adv/rooms/`)
     .then(res => {
       const sortedRooms = res.data.sort((a, b) => a.id - b.id);
       dispatch({ type: types.GET_ROOMS_SUCCESS, payload: sortedRooms });
@@ -55,11 +56,10 @@ export const getRooms = userData => dispatch => {
     });
 }
 
-
 export const initializeGame = userData => dispatch => {
 
   return axiosWithAuth()
-    .get(`${apiURL}adv/init/`)
+    .get(`${apiURL}/adv/init/`)
     .then(res => {
       dispatch({ type: types.SAVE_NUMBER_OF_PLAYERS, payload: res.data.players.length });
     })
@@ -72,7 +72,7 @@ export const initializeGame = userData => dispatch => {
 export const movePlayer = d => dispatch => {
 
   return axiosWithAuth()
-    .post(`${apiURL}adv/move/`, {
+    .post(`${apiURL}/adv/move/`, {
       direction: d
     })
     .then(res => {
@@ -91,10 +91,6 @@ export const movePlayer = d => dispatch => {
     });
 }
 
-
-
-
-
 export const movePlayerSuccess = (roomId) => async dispatch => {
   console.log(store.getState())
 
@@ -109,4 +105,3 @@ export const movePlayerSuccess = (roomId) => async dispatch => {
   });
 
 };
-
