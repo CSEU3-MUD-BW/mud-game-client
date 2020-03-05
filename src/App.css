@@ -89,7 +89,8 @@
   width: 90%;
   margin: auto;
   border-radius: 5px;
-  height: 53px;
+  border-radius: 5px;
+  height: 75px;
   padding: 5px;
 }
 
@@ -160,7 +161,7 @@
   width: 95%;
   margin: auto;
   margin-top: 7px;
-  height: 133px;
+  height: 126px;
   border-radius: 10px;
   padding-top: 5px;
 }
