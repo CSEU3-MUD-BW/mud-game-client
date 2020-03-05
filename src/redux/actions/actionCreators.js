@@ -41,9 +41,10 @@ export const login = userData => dispatch => {
   export const getRooms = () => dispatch => {
     dispatch({ type: types.GET_ROOMS });
 
-    return axios.get(`${apiURL}/adv/rooms`)
+    axios.get(`https://cseu3-mud.herokuapp.com/api/adv/rooms/adv/rooms`)
       .then(res => {
-        dispatch({ type: types.GET_ROOMS_SUCCESS, payload: res.data });
+        const sortedRooms = res.data.sort((a, b) => a.id - b.id);
+        dispatch({ type: types.GET_ROOMS_SUCCESS, payload: sortedRooms });
       })
       .catch(err => {
         console.log(err)
