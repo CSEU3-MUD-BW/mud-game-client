@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux';
 import authentication from './authenticationReducer';
-import character from './characterReducer';
+import player from './playerReducer';
+import roomReducer from './roomReducer';
+
 
 const appReducer = combineReducers({
-    character,
-    authentication
+    player,
+    authentication,
+    room:roomReducer
 });
 
 // const rootReducer = (state, action) => {
