@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .container-l {
@@ -40,39 +41,55 @@
 
 .intro {
   color: #F3F3F3;
-  margin-top: 20px;
+  margin-top: 3rem;
   font-size: 30px;
+  font-family: 'Press Start 2P', cursive;
 }
 .form-container {
   width: 500px;
   height: 320px;
   margin: auto;
   margin-top: 100px;
-  background-color: #F3F3F3;
+  background-color: #0A0A0A;
+
+  border: 3px solid #F3F3F3;
+  border-radius: 15px;
+
+  color: #F3F3F3;
 }
 
 .input {
   height: 45px;
   border-radius: 5px;
-  background: #edf2f7;
+  background: #F3F3F3;
   border: none;
   padding-left: 10px;
   margin-top: 30px;
   color: #0A0A0A;
   width: 295px;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .form-button {
   border: none;
   padding: 10px 30px;
-  background: #f35667;
+  background: #505050;
   border-radius: 8px;
   color: #F3F3F3;
   height: 45px;
   margin-top: 35px;
+  margin-bottom: 5px;
   width: 300px;
   padding-left: 10px;
   padding-right: 10px;
+  font-family: 'Press Start 2P', cursive;
+}
+.form-button:hover {
+  cursor: pointer;
+}
+
+.text-p a {
+  color: red;
 }
 
 .sidebox-container {
@@ -232,4 +249,7 @@
   background-color:#0A0A0A;
   color:#F3F3F3;
   font-family: 'Press Start 2P', cursive;
+}
+.logout:hover {
+  cursor: pointer;
 }

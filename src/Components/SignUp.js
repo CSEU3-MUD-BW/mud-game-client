@@ -28,7 +28,7 @@ const SignUp = props => {
 
     return (
         <div className='container-su'>
-            {/* Welcome to the SignUp page */}
+            <p className='intro'> Welcome to MUDerelict </p>
 
             <div className='form-container'>
 
@@ -42,10 +42,10 @@ const SignUp = props => {
 
             <button className='form-button' onClick={handleSubmit}> SignUp </button>
 
-            <p className='text-p'>
-                {" "}
-                Already have an account? &nbsp; <Link to="/"> Login</Link>{" "}
-            </p>
+            <div className='text-p'>
+                <p>Already have an account?</p>
+                <p><Link to="/">Login</Link></p>
+            </div>
 
             </div>
 
