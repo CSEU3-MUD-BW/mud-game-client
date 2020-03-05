@@ -66,11 +66,11 @@ export const initializeGame = userData => dispatch => {
     });
 }
 
-export const movePlayerUp = userData => dispatch => {
+export const movePlayer = d => dispatch => {
 
   return axiosWithAuth()
     .post(`${apiURL}adv/move/`, {
-      direction: 'n'
+      direction: d
     })
     .then(res => {
       if (res.data.error_msg) {
@@ -79,7 +79,7 @@ export const movePlayerUp = userData => dispatch => {
           payload:res.data.error_msg
         } )
       } else {
-        dispatch(movePlayerUpSuccess())
+        dispatch(movePlayerSuccess(res.data.nextRoomID))
       }
     })
     .catch(err => {
@@ -89,115 +89,118 @@ export const movePlayerUp = userData => dispatch => {
 }
 
 
-export const movePlayerDown = userData => dispatch => {
+// export const movePlayerDown = userData => dispatch => {
 
-  return axiosWithAuth()
-    .post(`${apiURL}adv/move/`, {
-      direction: 's'
-    })
-    .then(res => {
-      if (res.data.error_msg) {
-        dispatch({
-          type:types.MOVE_PLAYER_ERROR,
-          payload:res.data.error_msg
-        } )
-      } else {
-        dispatch(movePlayerDownSuccess())
-      }
-    })
-    .catch(err => {
-      console.log(err);
+//   return axiosWithAuth()
+//     .post(`${apiURL}adv/move/`, {
+//       direction: 's'
+//     })
+//     .then(res => {
+//       if (res.data.error_msg) {
+//         dispatch({
+//           type:types.MOVE_PLAYER_ERROR,
+//           payload:res.data.error_msg
+//         } )
+//       } else {
+//         dispatch(movePlayerDownSuccess())
+//       }
+//     })
+//     .catch(err => {
+//       console.log(err);
 
-    });
-}
+//     });
+// }
 
-export const movePlayerRight = userData => dispatch => {
+// export const movePlayerRight = userData => dispatch => {
 
-  return axiosWithAuth()
-    .post(`${apiURL}adv/move/`, {
-      direction: 'e'
-    })
-    .then(res => {
-      if (res.data.error_msg) {
-        dispatch({
-          type:types.MOVE_PLAYER_ERROR,
-          payload:res.data.error_msg
-        } )
-      } else {
-        dispatch(movePlayerRightSuccess())
-      }
-    })
-    .catch(err => {
-      console.log(err);
+//   return axiosWithAuth()
+//     .post(`${apiURL}adv/move/`, {
+//       direction: 'e'
+//     })
+//     .then(res => {
+//       if (res.data.error_msg) {
+//         dispatch({
+//           type:types.MOVE_PLAYER_ERROR,
+//           payload:res.data.error_msg
+//         } )
+//       } else {
+//         dispatch(movePlayerRightSuccess())
+//       }
+//     })
+//     .catch(err => {
+//       console.log(err);
 
-    });
-}
+//     });
+// }
 
-export const movePlayerLeft = userData => dispatch => {
+// export const movePlayerLeft = userData => dispatch => {
 
-  return axiosWithAuth()
-    .post(`${apiURL}adv/move/`, {
-      direction: 'w'
-    })
-    .then(res => {
-      if (res.data.error_msg) {
-        dispatch({
-          type:types.MOVE_PLAYER_ERROR,
-          payload:res.data.error_msg
-        } )
-      } else {
-        dispatch(movePlayerLeftSuccess())
-      }
-    })
-    .catch(err => {
-      console.log(err);
+//   return axiosWithAuth()
+//     .post(`${apiURL}adv/move/`, {
+//       direction: 'w'
+//     })
+//     .then(res => {
+//       if (res.data.error_msg) {
+//         dispatch({
+//           type:types.MOVE_PLAYER_ERROR,
+//           payload:res.data.error_msg
+//         } )
+//       } else {
+//         dispatch(movePlayerLeftSuccess())
+//       }
+//     })
+//     .catch(err => {
+//       console.log(err);
 
-    });
-}
+//     });
+// }
 
 
-export const movePlayerUpSuccess = () => async dispatch => {
+export const movePlayerSuccess = (roomId) => async dispatch => {
   console.log(store.getState())
-  const currentPosition = await store.getState().player.position;
+  // const currentPosition = await store.getState().player.position;
 
+  let row = Math.ceil(roomId / 10) - 1;
+  let col = roomId % 10;
 
-  if (currentPosition[1] !== 0) {
+  // if (currentPosition[1] !== 0) {
     dispatch({
-      type: types.MOVE_PLAYER_UP,
-      payload: [currentPosition[0], currentPosition[1] - SPRITE_SIZE]
+      type: types.MOVE_PLAYER,
+      payload: [row, col],
+      roomId
     });
-  }
+  // }
 };
 
-export const movePlayerDownSuccess = () => async dispatch => {
-  const currentPosition = await store.getState().player.position;
+// export const movePlayerDownSuccess = () => async dispatch => {
+//   const currentPosition = await store.getState().player.position;
 
-  if (currentPosition[1] !== MAP_HEIGHT - SPRITE_SIZE) {
-    dispatch({
-      type: types.MOVE_PLAYER_DOWN,
-      payload: [currentPosition[0], currentPosition[1] + SPRITE_SIZE]
-    });
-  }
-};
+//   if (currentPosition[1] !== MAP_HEIGHT - SPRITE_SIZE) {
+//     dispatch({
+//       type: types.MOVE_PLAYER_DOWN,
+//       payload: [currentPosition[0], currentPosition[1] + SPRITE_SIZE]
+//     });
+//   }
+// };
 
-export const movePlayerRightSuccess = () => async dispatch => {
-  const currentPosition = await store.getState().player.position;
+// export const movePlayerRightSuccess = () => async dispatch => {
+//   const currentPosition = await store.getState().player.position;
 
-  if (currentPosition[0] !== MAP_WIDTH - SPRITE_SIZE) {
-    dispatch({
-      type: types.MOVE_PLAYER_RIGHT,
-      payload: [currentPosition[0] + SPRITE_SIZE, currentPosition[1]]
-    });
-  }
-};
+//   if (currentPosition[0] !== MAP_WIDTH - SPRITE_SIZE) {
+//     dispatch({
+//       type: types.MOVE_PLAYER_RIGHT,
+//       payload: [currentPosition[0] + SPRITE_SIZE, currentPosition[1]]
+//     });
+//   }
+// };
 
-export const movePlayerLeftSuccess = () => async dispatch => {
-  const currentPosition = await store.getState().player.position;
+// export const movePlayerLeftSuccess = () => async dispatch => {
+//   const currentPosition = await store.getState().player.position;
 
-  if (currentPosition[0] !== 0) {
-    dispatch({
-      type: types.MOVE_PLAYER_LEFT,
-      payload: [currentPosition[0] - SPRITE_SIZE, currentPosition[1]]
-    });
-  }
-};
+//   if (currentPosition[0] !== 0) {
+//     dispatch({
+//       type: types.MOVE_PLAYER_LEFT,
+//       payload: [currentPosition[0] - SPRITE_SIZE, currentPosition[1]]
+//     });
+//   }
+// };

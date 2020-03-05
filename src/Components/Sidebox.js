@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { chunkArray } from '../utils/helpers';
 import { connect } from 'react-redux';
 import { getRooms, initializeGame } from '../redux/actions/actionCreators';
-import { movePlayerUp, movePlayerDown, movePlayerRight, movePlayerLeft } from '../redux/actions/actionCreators';
+import { movePlayer } from '../redux/actions/actionCreators';
 
 
 function Sidebox(props) {
@@ -13,30 +12,26 @@ function Sidebox(props) {
     }, [])
 
 
-    let rooms = chunkArray(props.rooms, 10);
-    console.log(rooms)
 
-    let x = props.position[1] / 40;
-    let y = props.position[0] / 40;
-
+   
 
     let title = '';
     let description = '';
-    if (rooms.length) {
-        title = rooms[x][y].title;
-        description = rooms[x][y].description;
+    if (props.rooms.length) {
+        title = props.rooms[props.roomId - 1].title;
+        description = props.rooms[props.roomId - 1].description;
     }
 
     function updatePlayerPosition(position) {
         switch (position) {
             case 'n':
-                return props.up();
+                return props.movePlayer('n');
             case 's':
-                return props.down();
+                return props.movePlayer('s');
             case 'e':
-                return props.right();
+                return props.movePlayer('e');
             case 'w':
-                return props.left();
+                return props.movePlayer('w');
 
             default:
                 return position;
@@ -53,7 +48,9 @@ function Sidebox(props) {
 
             <div className='sidebox-mini-container'>
                 <p className='sidebox-mini'>ITEMS</p>
-                <p className='sidebox-mini'>{props.number} PLAYERS IN ROOM</p>
+                <p className='sidebox-mini' style={{
+                    marginRight:'5px'
+                }}>{props.number} PLAYER IN ROOM</p>
 
             </div>
 
@@ -88,7 +85,7 @@ function Sidebox(props) {
                     </div>
 
                     <div>
-                        <p className='Error-message'>Error Message</p>
+                    <p className='Error-message'>{props.error}</p>
                     </div>
 
                 </div>
@@ -106,6 +103,8 @@ const mapStateToProps = store => {
     return {
         rooms: store.room.rooms,
         position: store.player.position,
+        roomId:store.player.roomId,
+        error:store.player.error,
         number: store.room.numberOfPlayers
     }
 }
@@ -113,10 +112,7 @@ const mapStateToProps = store => {
 const mapDispatchToProps = {
     getRooms,
     initialize: initializeGame,
-    up:movePlayerUp,
-    down:movePlayerDown,
-    right:movePlayerRight,
-    left: movePlayerLeft
+    movePlayer:movePlayer,
 
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebox);
