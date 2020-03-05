@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { getRooms, movePlayer } from '../redux/actions/actionCreators';
 import { logout } from '../redux/actions/actionCreators';
 import Sidebox from './Sidebox';
@@ -34,12 +33,13 @@ function Home(props) {
 
     const onLogOut = () => {
         localStorage.removeItem('token');
+        props.logout()
         props.history.push('/')
     }
 
     return (
         <div className='container-h'>
-            <p onClick={onLogOut}> Log Out</p>
+            <button className='logout' onClick={onLogOut}> Log Out</button>
             <div style={{ position: 'relative' }}>
                 {rooms.length > 0 && <Map rooms={rooms} player={player} />}
             </div>
