@@ -200,21 +200,21 @@ function Map(props) {
   return (
     <StyledMapDiv>
       {
-        grid.map(row => (
-          <div className='map row'>
+        grid.map((row, y) => (
+          <div className='map row' key={`row-${y}`}>
             {
-              row.map(symbol => (
+              row.map((symbol, x) => (
                 symbol === '==' ?
-                  <div className='symbol horizontal-connector'>
+                  <div className='symbol horizontal-connector' key={`symbol-${x}`}>
                     <div className='tile' />
                   </div> :
                 symbol === '||' ?
-                  <div className='symbol vertical-connector'>
+                  <div className='symbol vertical-connector' key={`symbol-${x}`}>
                     <div className='tile' />
                   </div> :
                 symbol === undefined ? 
-                  <div className='symbol gap' /> :
-                <div className='symbol room'>
+                  <div className='symbol gap' key={`symbol-${x}`} /> :
+                <div className='symbol room' key={`symbol-${x}`}>
                   <div className='tile' />
                 </div>
               ))
