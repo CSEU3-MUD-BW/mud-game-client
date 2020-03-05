@@ -61,7 +61,7 @@ export const initializeGame = userData => dispatch => {
   return axiosWithAuth()
     .get(`${apiURL}/adv/init/`)
     .then(res => {
-      dispatch({ type: types.SAVE_NUMBER_OF_PLAYERS, payload: res.data.players.length });
+      dispatch({ type: types.GET_PLAYER_INFO, payload: res.data });
     })
     .catch(err => {
       console.log(err);
