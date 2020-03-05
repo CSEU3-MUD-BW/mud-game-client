@@ -46,7 +46,7 @@ function Sidebox(props) {
                     <p className='sidebox-mini'>ITEMS</p>
                     <p className='sidebox-mini' style={{
                         marginRight:'5px'
-                    }}>{props.number} PLAYER IN ROOM</p>
+                    }}>{props.number} PLAYERS IN ROOM</p>
 
                 </div>
             </div>
@@ -87,8 +87,12 @@ function Sidebox(props) {
             <div className='section bottom'>
                 <p className='chat-box'>Chat Box</p>
                 <div className='sidebox-footer'>
-                    <p className='chat-box-message'>Message</p>
-                    <p className='enter'>Enter</p>
+                    <div className='chat-box-message'>
+                        <p>_</p>
+                    </div>
+                    <div className='enter'>
+                        <p>Enter</p>
+                    </div>
                 </div>
             </div>
         </div>
