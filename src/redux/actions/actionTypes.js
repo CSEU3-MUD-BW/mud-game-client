@@ -10,5 +10,18 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
 export const LOGOUT = 'LOGOUT';
 
+//Move players
+export const MOVE_PLAYER_UP = 'MOVE_PLAYER_UP';
+export const MOVE_PLAYER_DOWN = 'MOVE_PLAYER_DOWN';
+export const MOVE_PLAYER_RIGHT = 'MOVE_PLAYER_RIGHT';
+export const MOVE_PLAYER_LEFT = 'MOVE_PLAYER_LEFT';
+export const MOVE_PLAYER_ERROR = 'MOVE_PLAYER_ERROR';
+
+//ROOMS/GRID
+export const SAVE_ROOMS = 'SAVE_ROOMS';
+
+export const SAVE_NUMBER_OF_PLAYERS = 'SAVE_NUMBER_OF_PLAYERS';
+
+
 
 
