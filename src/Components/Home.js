@@ -13,23 +13,23 @@ function Home(props) {
 
     useEffect(() => {
         getRooms()
+        
+        window.addEventListener('keydown', e => {
+            e.preventDefault();
+            switch (e.keyCode) {
+                case 38:
+                    return movePlayer('n');
+                case 40:
+                    return movePlayer('s');
+                case 39:
+                    return movePlayer('e');
+                case 37:
+                    return movePlayer('w');
+                default:
+                    return e.keyCode;
+            }
+        });
     }, [])
-
-    window.addEventListener('keydown', e => {
-        e.preventDefault();
-        switch (e.keyCode) {
-            case 38:
-                return movePlayer('n');
-            case 40:
-                return movePlayer('s');
-            case 39:
-                return movePlayer('e');
-            case 37:
-                return movePlayer('w');
-            default:
-                return e.keyCode;
-        }
-    });
 
     const onLogOut = () => {
         localStorage.removeItem('token');
