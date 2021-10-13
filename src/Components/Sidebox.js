@@ -84,17 +84,17 @@ function Sidebox(props) {
                 </div>
             </div>
 
-            <div className='section bottom'>
-                <p className='chat-box'>Chat Box</p>
-                <div className='sidebox-footer'>
-                    <div className='chat-box-message'>
-                        <p>_</p>
-                    </div>
-                    <div className='enter'>
-                        <p>Enter</p>
-                    </div>
-                </div>
-            </div>
+            {/*<div className='section bottom'>*/}
+            {/*    <p className='chat-box'>Chat Box</p>*/}
+            {/*    <div className='sidebox-footer'>*/}
+            {/*        <div className='chat-box-message'>*/}
+            {/*            <p>_</p>*/}
+            {/*        </div>*/}
+            {/*        <div className='enter'>*/}
+            {/*            <p>Enter</p>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     )
 }
