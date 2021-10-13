@@ -112,10 +112,6 @@ const SignUp = props => {
     //
     //         <button className='form-button' onClick={handleSubmit}> SignUp </button>
     //
-    //         <div className='text-p'>
-    //             <p>Already have an account?</p>
-    //             <p><Link to="/">Login</Link></p>
-    //         </div>
     //
     //         </div>
     //
