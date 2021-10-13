@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 50px;
+  align-items: center;
 }
 
 .container-h {
@@ -46,16 +46,28 @@
   font-family: 'Press Start 2P', cursive;
 }
 .form-container {
-  width: 500px;
-  height: 320px;
-  margin: auto;
-  margin-top: 100px;
-  background-color: #0A0A0A;
+  /*width: 500px;*/
+  /*height: 320px;*/
+  /*margin: auto;*/
+  /*margin-top: 100px;*/
+  /*background-color: #0A0A0A;*/
 
+  /*border: 3px solid #F3F3F3;*/
+  /*border-radius: 15px;*/
+
+  /*color: #F3F3F3;*/
+  max-width: 500px;
+  /* height: 100vh; */
+  /* margin: auto; */
+  /* margin-top: 100px; */
+  background-color: #0A0A0A;
   border: 3px solid #F3F3F3;
   border-radius: 15px;
-
   color: #F3F3F3;
+  box-sizing: content-box;
+  padding: 20px 20px 10px 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .input {
@@ -64,28 +76,33 @@
   background: #F3F3F3;
   border: none;
   padding-left: 10px;
-  margin-top: 30px;
+  margin-top: 10px;
   color: #0A0A0A;
-  width: 295px;
+  /* width: 295px; */
+  width: 380px;
   font-family: 'Press Start 2P', cursive;
 }
 
 .form-button {
   border: none;
-  padding: 10px 30px;
+  font-size: 13px;
+  /* padding: 10px 30px; */
   background: #505050;
   border-radius: 8px;
   color: #F3F3F3;
-  height: 45px;
-  margin-top: 35px;
+  height: 48px;
+  margin-top: 25px;
   margin-bottom: 5px;
-  width: 300px;
-  padding-left: 10px;
-  padding-right: 10px;
+  width: 389px;
+  /* padding-left: 10px; */
+  /* padding-right: 10px; */
   font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
 }
 .form-button:hover {
-  cursor: pointer;
+  background: white;
+  color: #505050;
+  font-weight: 600;
 }
 
 .text-p a {
@@ -253,4 +270,19 @@
 }
 .logout:hover {
   cursor: pointer;
+}
+
+.yup-error{
+  color: #ff0000;
+  font-size: 9px;
+  margin-top: 9px;
+}
+.input-label{
+  font-size: 14px;
+  text-align: left;
+  margin-top: 25px;
+}
+
+.input-label b{
+  color:red
 }

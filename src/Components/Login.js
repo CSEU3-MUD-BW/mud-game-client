@@ -1,49 +1,141 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../redux/actions/actionCreators';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import * as Yup from "yup";
+import {apiURL, signup} from '../redux/actions/actionCreators'
+import LaddaButton, {EXPAND_LEFT, L} from "react-ladda";
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import axios from "axios";
+import {toast} from "react-toastify";
+import * as types from "../redux/actions/actionTypes";
 
 const Login = props => {
 
-    const username = useRef();
-    const password = useRef();
+    console.log(props)
+    const [loading, setLoading] = useState(false);
 
-    const handleSubmit = () => {
-
-        const userData = {
-            username: username.current.value,
-            password: password.current.value,
-        }
-
-        if (userData.username && userData.password) {
-            props.login(userData)
-        }
-
+    const initialState = {
+        username: "",
+        password: "",
     }
 
-    if (props.token) {
-        props.history.push('/home')
+    const validation = Yup.object().shape({
+        username: Yup.string()
+            .min(.4, "username must be minimum of 8 characters")
+            .required('Field can not be empty'),
+        password: Yup.string()
+            .required('Field can not be empty'),
+
+    });
+
+    const onSubmit = (values) => {
+        setLoading(true)
+        axios.post(`${apiURL}/login/`, values)
+            .then(res => {
+                console.log(res)
+                toast.success("You have Logged in successfully!", {
+                    position: toast.POSITION.TOP_CENTER
+                });
+                localStorage.setItem('token', res.data.key)
+                props.history.push('/home')
+                setLoading(false);
+            })
+            .catch(error => {
+                console.log(error.response);
+                if(error.response.data.password){
+                    error.response.data.password.length && (
+                        error.response.data.password.map(err => {
+                            toast.error(err, {
+                                position: toast.POSITION.TOP_RIGHT
+                            })
+                        })
+                    )
+                } else if (error.response.data.non_field_errors){
+                    error.response.data.non_field_errors.length && (
+                        error.response.data.non_field_errors.map(err => {
+                            toast.error(err, {
+                                position: toast.POSITION.TOP_RIGHT
+                            })
+                        })
+                    )
+                }
+                else{
+                    toast.error("Oops an error occured !", {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }
+                setLoading(false);
+            });
     }
+
+    // const username = useRef();
+    // const password = useRef();
+    //
+    // const handleSubmit = () => {
+    //
+    //     const userData = {
+    //         username: username.current.value,
+    //         password: password.current.value,
+    //     }
+    //
+    //     if (userData.username && userData.password) {
+    //         props.login(userData)
+    //     }
+    //
+    // }
+    //
+    // if (props.token) {
+    //     props.history.push('/home')
+    // }
 
     return (
-        <div className='container-l'>
-           <p className='intro'> Welcome to MUDerelict </p>
+        <div className='container-su'>
+           <p className='intro'> Login to MUDerelict </p>
             <div className='form-container'>
+                <Formik
+                    initialValues={initialState}
+                    validationSchema={validation}
+                    onSubmit={onSubmit}
+                >
+                    {props => {
+                        return (
+                            <Form>
 
-                <div>
-                    <input className='input'  type="text" placeholder="UserName" required ref={username} />
-                </div>
+                                <div className='form-holder'>
 
-                <div>
-                    <input className='input' type="password" placeholder="Password" required ref={password} />
-                </div>
+                                    <div>
+                                        <p className='input-label'> Enter your Username <b>*</b></p>
+                                        <Field className='input' type='text' name='username'
+                                               placeholder='Enter your username'/>
+                                        <ErrorMessage className='yup-error' name='username' component='div'/>
+                                    </div>
 
-                <button className='form-button' onClick={handleSubmit} > Login </button>
+                                    <div>
+                                        <p className='input-label'> Enter your password <b>*</b></p>
+                                        <Field className='input' type='password' name='password'
+                                               placeholder='Enter your password'/>
+                                        <ErrorMessage className='yup-error' name='password' component='div'/>
+                                    </div>
 
-                <div className='text-p'>
-                    <p>Don't have an account yet?</p>
-                    <p><Link to="/signup"> Sign up here </Link></p>
-                </div>
+
+                                    <LaddaButton
+                                        loading={loading}
+                                        data-color="#eee"
+                                        data-size={L}
+                                        data-style={EXPAND_LEFT}
+                                        className='form-button'
+                                        data-spinner-size={20}
+                                        data-spinner-color="#ddd"
+                                        type='submit'
+                                        data-spinner-lines={12}
+                                    >
+                                        Login
+                                    </LaddaButton>
+                                </div>
+                            </Form>
+                        )
+                    }}
+                </Formik>
 
             </div>
 
@@ -60,6 +152,6 @@ const mapStateToProps = store => {
 }
 
 const mapDispatchToProps = {
-    login
+    // login
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
