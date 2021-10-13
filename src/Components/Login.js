@@ -89,7 +89,7 @@ const Login = props => {
     // }
 
     return (
-        <div className='container-su'>
+        <div className='container-su1'>
            <p className='intro'> WELCOME AGAIN,LOGIN TO PLAY </p>
             <div className='form-container'>
                 <Formik

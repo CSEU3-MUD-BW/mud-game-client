@@ -25,6 +25,16 @@
   align-items: center;
 }
 
+.container-su1{
+  text-align: center;
+  height: 100vh;
+  background: url(./images/landing-page.jpg);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .container-h {
   text-align: center;
   height: 100vh;
