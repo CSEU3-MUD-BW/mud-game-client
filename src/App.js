@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route, Redirect, withRouter} from 'react-router-dom';
+import {Route, Router, Redirect, withRouter} from 'react-router-dom';
 import * as actionCreators from './redux/actions/actionCreators';
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from 'react-toastify';
@@ -16,9 +16,11 @@ function App() {
     return (
         <div className="App">
             <ToastContainer/>
+            <Router history={history}>
             <Route exact path='/' component={Login}/>
             <Route exact path='/signup' component={SignUp}/>
             <Route path='/home' render={props => withAuthCheck(Home, props)}/>
+            </Router>
         </div>
     );
 }

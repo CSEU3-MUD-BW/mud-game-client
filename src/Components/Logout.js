@@ -1,5 +1,5 @@
 import React from 'react';
-// import {history} from "../../App";
+import {history} from "../App";
 
 
 function Logout(props) {
