@@ -7,8 +7,10 @@ import {ToastContainer} from 'react-toastify';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import './App.css';
+import {createBrowserHistory} from 'history';
 import Home from './Components/Home';
 
+export const history = createBrowserHistory();
 
 function App() {
     return (
