@@ -90,7 +90,7 @@ const Login = props => {
 
     return (
         <div className='container-su'>
-           <p className='intro'> Login to MUDerelict </p>
+           <p className='intro'> WELCOME AGAIN,LOGIN TO PLAY </p>
             <div className='form-container'>
                 <Formik
                     initialValues={initialState}

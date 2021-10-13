@@ -124,7 +124,7 @@ const SignUp = props => {
 
     return (
         <div className='container-su'>
-            <p className='intro'> Welcome to MUDerelict </p>
+            <p className='intro'> WELCOME TO MUDerelict </p>
             <div className='form-container'>
 
                 <Formik

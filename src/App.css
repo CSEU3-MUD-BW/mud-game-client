@@ -6,7 +6,7 @@
 .container-l {
   text-align: center;
   height: 100vh;
-  background: url(./images/login-background-LD.png);
+  background: url(./images/landing-page.jpg);
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
 .container-su {
   text-align: center;
   height: 100vh;
-  background: url(./images/signup-background-LD.png);
+  background: url(./images/landing.jpg);
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -40,10 +40,11 @@
 }
 
 .intro {
-  color: #F3F3F3;
+  color: #ffffff;
   margin-top: 3rem;
   font-size: 30px;
   font-family: 'Press Start 2P', cursive;
+  background: black;
 }
 .form-container {
   /*width: 500px;*/
