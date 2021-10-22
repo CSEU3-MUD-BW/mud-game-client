@@ -1,5 +1,5 @@
 import React from 'react';
-import {history} from "../App";
+import {history} from "../index";
 
 
 function Logout(props) {
@@ -8,6 +8,8 @@ function Logout(props) {
         localStorage.removeItem("token");
         // localStorage.removeItem("user");
         history.push("/");
+        window.location.replace("/");
+
     }
 
     return (

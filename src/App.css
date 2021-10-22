@@ -11,7 +11,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 50px;
+  /*padding-left: 50px;*/
+  align-items: center;
 }
 
 .container-su {
@@ -48,20 +49,7 @@
   padding: 10px;
 }
 .form-container {
-  /*width: 500px;*/
-  /*height: 320px;*/
-  /*margin: auto;*/
-  /*margin-top: 100px;*/
-  /*background-color: #0A0A0A;*/
-
-  /*border: 3px solid #F3F3F3;*/
-  /*border-radius: 15px;*/
-
-  /*color: #F3F3F3;*/
   max-width: 500px;
-  /* height: 100vh; */
-  /* margin: auto; */
-  /* margin-top: 100px; */
   background-color: #0A0A0A;
   border: 3px solid #F3F3F3;
   border-radius: 15px;

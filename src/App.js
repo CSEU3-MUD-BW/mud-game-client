@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Route, BrowserRouter, Redirect, withRouter} from 'react-router-dom';
-
 import * as actionCreators from './redux/actions/actionCreators';
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from 'react-toastify';
