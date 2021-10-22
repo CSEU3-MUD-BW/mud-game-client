@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import React, {useRef, useState} from 'react';
+import {connect} from 'react-redux';
+import {Link} from "react-router-dom";
 import * as Yup from "yup";
 import {apiURL, signup} from '../redux/actions/actionCreators'
 import LaddaButton, {EXPAND_LEFT, L} from "react-ladda";
@@ -50,7 +50,7 @@ const SignUp = props => {
             })
             .catch(error => {
                 console.log(error.response);
-                if(error.response.data.password1){
+                if (error.response.data.password1) {
                     error.response.data.password1.length && (
                         error.response.data.password1.map(err => {
                             toast.error(err, {
@@ -58,7 +58,7 @@ const SignUp = props => {
                             })
                         })
                     )
-                } else if (error.response.data.username){
+                } else if (error.response.data.username) {
                     error.response.data.username.length && (
                         error.response.data.username.map(err => {
                             toast.error(err, {
@@ -66,8 +66,7 @@ const SignUp = props => {
                             })
                         })
                     )
-                }
-                else{
+                } else {
                     toast.error("Oops an error occured !", {
                         position: toast.POSITION.TOP_RIGHT
                     });
@@ -172,8 +171,12 @@ const SignUp = props => {
                                         type='submit'
                                         data-spinner-lines={12}
                                     >
-                                       Signup
+                                        Signup
                                     </LaddaButton>
+                                    <div className='text-p'>
+                                        <p>Already have an account?</p>
+                                        <p><Link to="/">Login</Link></p>
+                                    </div>
                                 </div>
                             </Form>
                         )
