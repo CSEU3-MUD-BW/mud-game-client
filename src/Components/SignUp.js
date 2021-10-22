@@ -175,7 +175,7 @@ const SignUp = props => {
                                     </LaddaButton>
                                     <div className='text-p'>
                                         <p>Already have an account?</p>
-                                        <p><Link to="/">Login</Link></p>
+                                        <p> <Link to="/">Login</Link> </p>
                                     </div>
                                 </div>
                             </Form>

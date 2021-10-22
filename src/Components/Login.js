@@ -133,7 +133,7 @@ const Login = props => {
                                     </LaddaButton>
                                     <div className='text-p'>
                                         <p>Don't have an account?</p>
-                                        <p><Link to="/signup">Signup</Link></p>
+                                        <p> <Link to="/signup">Signup</Link> </p>
                                     </div>
                                 </div>
                             </Form>

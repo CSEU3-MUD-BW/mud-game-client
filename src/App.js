@@ -19,7 +19,7 @@ function App() {
             <Router history={history}>
             <Route exact path='/' component={Login}/>
             <Route exact path='/signup' component={SignUp}/>
-            <Route path='/home' render={props => withAuthCheck(Home, props)}/>
+            <Route exact path='/home' render={props => withAuthCheck(Home, props)}/>
             </Router>
         </div>
     );
