@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route, Router, Redirect, withRouter} from 'react-router-dom';
+import {Route, BrowserRouter, Redirect, withRouter} from 'react-router-dom';
+
 import * as actionCreators from './redux/actions/actionCreators';
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from 'react-toastify';
@@ -16,11 +17,12 @@ function App() {
     return (
         <div className="App">
             <ToastContainer/>
-            <Router history={history}>
+
+            <BrowserRouter history={history}>
             <Route exact path='/' component={Login}/>
             <Route exact path='/signup' component={SignUp}/>
             <Route exact path='/home' render={props => withAuthCheck(Home, props)}/>
-            </Router>
+            </BrowserRouter>
         </div>
     );
 }
@@ -32,4 +34,5 @@ function withAuthCheck(Component, props) {
     return <Redirect to='/'/>;
 }
 
-export default withRouter(connect(state => state, actionCreators)(App));
+export default App;
+// export default withRouter(connect(state => state, actionCreators)(App));
